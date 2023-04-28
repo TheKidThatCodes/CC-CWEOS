@@ -1,0 +1,28 @@
+on:
+  push:
+    branches:
+    -   "dev"
+name: "Nightly Build"
+run-name: ""
+jobs:
+    build:
+        name: "Build"
+        runs-on: "ubuntu-latest"
+        steps:
+        -   uses: actions/checkout@v3
+        -   uses: "actions/setup-python@v4"
+            with:
+                python-version: '3.10'
+        -   run: "python3 -m ./build/"
+        -   uses: actions/upload-artifact@v3
+            with:
+                name: build
+                path: |
+                    /build/artifacts/installer_regular
+                    /build/artifacts/standaloneinstaller_regular
+                    /build/artifacts/installer_minimal
+                    /build/artifacts/standaloneinstaller_minimal
+                    /build/artifacts/installer_barebones
+                    /build/artifacts/standaloneinstaller_barebones
+                    /build/artifacts/
+
