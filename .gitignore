@@ -1,0 +1,6 @@
+ignore_*
+__pycache__/
+__pycache__/*
+.DS_Store
+__MACOSX__
+/build/artifacts/*
